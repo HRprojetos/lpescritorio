@@ -1,0 +1,818 @@
+f<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HR Projetos — Projetos de Engenharia Integrados em BIM</title>
+<meta name="description" content="Projetos de engenharia completos e integrados em BIM. Entregues 30% mais rápido, com 20% menos custo de obra. +400 projetos em 10 anos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary:#0F1F35;       /* marinho escuro profundo */
+    --color-primary-2:#162C4A;     /* marinho médio, para gradientes */
+    --color-accent:#F2B705;        /* amarelo da marca */
+    --color-bg:#0F1F35;            /* fundo geral escuro */
+    --color-surface:#16253E;       /* cards sobre fundo escuro */
+    --color-surface-light:#FFFFFF; /* seções claras de respiro */
+    --color-text:#FFFFFF;
+    --color-text-dark:#0F1F35;
+    --color-muted:#9DAEC4;
+    --color-border:rgba(255,255,255,0.10);
+    --font-heading:'Sora', sans-serif;
+    --font-body:'DM Sans', sans-serif;
+    --container-max:1100px;
+    --padding-x-m:24px;
+    --padding-x-d:96px;
+    --section-py-m:56px;
+    --section-py-d:80px;
+    --radius-btn:8px;
+    --radius-card:12px;
+    --shadow-sm:0 1px 3px rgba(0,0,0,0.25);
+    --shadow-md:0 4px 16px rgba(0,0,0,0.35);
+    --shadow-lg:0 12px 32px rgba(0,0,0,0.45);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    font-family:var(--font-body);
+    color:var(--color-text);
+    background:var(--color-bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img { max-width:100%; display:block; }
+
+  .container {
+    max-width:var(--container-max);
+    margin:0 auto;
+    padding:0 var(--padding-x-m);
+  }
+  @media (min-width:768px) { .container { padding:0 var(--padding-x-d); } }
+
+  section { padding:var(--section-py-m) 0; position:relative; }
+  @media (min-width:768px) { section { padding:var(--section-py-d) 0; } }
+
+  /* ===== BACKGROUNDS COM GRADIENTE ===== */
+  .bg-dark {
+    background:
+      radial-gradient(ellipse at top right, rgba(242,183,5,0.06) 0%, transparent 50%),
+      linear-gradient(180deg, #0B1828 0%, #0F1F35 100%);
+  }
+  .bg-dark-alt {
+    background:
+      radial-gradient(ellipse at bottom left, rgba(242,183,5,0.05) 0%, transparent 55%),
+      linear-gradient(180deg, #0F1F35 0%, #132438 100%);
+  }
+  .bg-dark-deep {
+    background:linear-gradient(180deg, #0B1828 0%, #060D17 100%);
+  }
+  .bg-light {
+    background:var(--color-surface-light);
+    color:var(--color-text-dark);
+  }
+  .bg-light h1, .bg-light h2, .bg-light h3 { color:var(--color-text-dark); }
+  .bg-light p { color:var(--color-text-dark); }
+  .bg-light .muted { color:#5C6B7F; }
+
+  h1, h2, h3 {
+    font-family:var(--font-heading);
+    font-weight:800;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+    color:var(--color-text);
+  }
+  h1 { font-size:32px; }
+  h2 { font-size:24px; font-weight:700; }
+  h3 { font-size:20px; font-weight:700; }
+  @media (min-width:768px) {
+    h1 { font-size:48px; }
+    h2 { font-size:32px; }
+    h3 { font-size:24px; }
+  }
+  .hero-h1 { font-size:clamp(28px, 5vw, 48px); }
+
+  p { font-size:16px; color:var(--color-text); }
+  @media (min-width:768px) { p { font-size:17px; } }
+
+  .muted { color:var(--color-muted); }
+
+  .anchor { font-style:italic; font-weight:500; color:var(--color-accent); }
+  .bg-light .anchor { color:var(--color-primary); }
+
+  .eyebrow {
+    font-family:var(--font-heading);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--color-accent);
+    background:rgba(242,183,5,0.12);
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:16px;
+  }
+
+  .btn {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size:16px;
+    border-radius:var(--radius-btn);
+    border:none;
+    cursor:pointer;
+    text-decoration:none;
+    transition:all 200ms ease-out;
+    height:48px;
+    padding:0 32px;
+    white-space:nowrap;
+  }
+  .btn-primary { background:var(--color-accent); color:var(--color-text-dark); }
+  .btn-primary:hover {
+    filter:brightness(0.95);
+    box-shadow:0 4px 20px rgba(242,183,5,0.45);
+    transform:translateY(-2px);
+  }
+  .btn-secondary {
+    background:rgba(255,255,255,0.04);
+    color:var(--color-text);
+    border:1.5px solid var(--color-border);
+  }
+  .btn-secondary:hover { border-color:var(--color-accent); transform:translateY(-2px); }
+  .bg-light .btn-secondary { color:var(--color-text-dark); border-color:#E2E6ED; }
+
+  @media (max-width:767px) { .btn { width:100%; } }
+
+  .card {
+    background:var(--color-surface);
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-card);
+    box-shadow:var(--shadow-md);
+    overflow:hidden;
+    transition:transform 250ms ease-out, box-shadow 250ms ease-out;
+  }
+  .card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+  .bg-light .card { background:#FFFFFF; border-color:#E2E6ED; }
+
+  .card-pad { padding:32px; }
+
+  .grid-2 { display:grid; grid-template-columns:1fr; gap:24px; }
+  .grid-3 { display:grid; grid-template-columns:1fr; gap:24px; }
+  @media (min-width:768px) {
+    .grid-2 { grid-template-columns:1fr 1fr; }
+    .grid-3 { grid-template-columns:1fr 1fr 1fr; }
+  }
+
+  .split { display:grid; grid-template-columns:1fr; gap:40px; align-items:center; }
+  @media (min-width:900px) { .split { grid-template-columns:1fr 1fr; gap:64px; } }
+
+  .img-rounded { border-radius:var(--radius-card); }
+
+  .icon { width:24px; height:24px; flex-shrink:0; stroke:var(--color-text); }
+  .icon-accent { stroke:var(--color-accent); }
+  .icon-muted { stroke:var(--color-muted); }
+  .bg-light .icon { stroke:var(--color-text-dark); }
+
+  .reveal { opacity:0; transform:translateY(16px); transition:opacity 500ms ease-out, transform 500ms ease-out; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-delay-1 { transition-delay:80ms; }
+  .reveal-delay-2 { transition-delay:160ms; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal.visible { transition:none; opacity:1; transform:none; }
+  }
+
+  /* ===== HEADER ===== */
+  .topbar {
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,24,40,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--color-border);
+  }
+  .topbar .container { display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .topbar .logo-text { font-family:var(--font-heading); font-weight:800; font-size:18px; color:#FFFFFF; }
+  .topbar .logo-text span { color:var(--color-accent); }
+  .topbar-logo { height:28px; width:auto; }
+  .topbar .btn { height:40px; padding:0 20px; font-size:14px; }
+
+  /* ===== HERO ===== */
+  .hero-grid { display:grid; grid-template-columns:1fr; gap:40px; align-items:center; }
+  @media (min-width:900px) { .hero-grid { grid-template-columns:1fr 1fr; gap:56px; } }
+  .hero-img-wrap {
+    border-radius:var(--radius-card);
+    overflow:hidden;
+    box-shadow:var(--shadow-lg);
+    position:relative;
+  }
+  .hero-img-wrap::after {
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 50%, rgba(11,24,40,0.55) 100%);
+    pointer-events:none;
+  }
+  .hero-img-wrap img { aspect-ratio:4/5; object-fit:cover; width:100%; }
+  @media (max-width:899px) { .hero-img-wrap img { aspect-ratio:16/10; } }
+
+  /* ===== DEPOIMENTOS ===== */
+  .quote-icon { width:28px; height:28px; margin-bottom:12px; }
+  .testimonial-card img { width:100%; aspect-ratio:16/9; object-fit:cover; }
+  .testimonial-name { font-family:var(--font-heading); font-weight:700; font-size:15px; margin-top:16px; }
+  .testimonial-role { font-size:13px; color:var(--color-muted); }
+  .bg-light .testimonial-role { color:#5C6B7F; }
+
+  /* ===== VOZES DA CABEÇA ===== */
+  .voices { display:grid; grid-template-columns:1fr; gap:24px; margin:40px 0; }
+  @media (min-width:768px) { .voices { grid-template-columns:1fr 1fr 1fr; } }
+  .voice-card {
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-card);
+    padding:28px 24px;
+    text-align:center;
+  }
+  .voice-text { font-style:italic; font-size:16px; color:#FFFFFF; }
+
+  /* ===== STATS ===== */
+  .stats-grid { display:grid; grid-template-columns:1fr; gap:24px; margin-top:40px; }
+  @media (min-width:768px) { .stats-grid { grid-template-columns:1fr 1fr; } }
+  .stat-card {
+    background:linear-gradient(160deg, rgba(242,183,5,0.08), rgba(255,255,255,0.02));
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-card);
+    padding:40px 32px;
+    text-align:center;
+  }
+  .stat-number { font-family:var(--font-heading); font-weight:800; font-size:48px; color:var(--color-accent); line-height:1; }
+  .stat-label { margin-top:8px; font-weight:700; color:#FFFFFF; }
+
+  /* ===== BIM ===== */
+  .bim-grid { display:grid; grid-template-columns:1fr; gap:24px; margin-top:40px; }
+  @media (min-width:768px) { .bim-grid { grid-template-columns:1fr 1fr; } }
+  .bim-grid img {
+    width:100%; aspect-ratio:1/1; object-fit:cover;
+    border-radius:var(--radius-card);
+    border:1px solid var(--color-border);
+    box-shadow:var(--shadow-md);
+  }
+  .bim-caption { text-align:center; margin-top:24px; max-width:700px; margin-left:auto; margin-right:auto; }
+
+  /* ===== ENTREGÁVEIS ===== */
+  .deliverable-card img { width:100%; aspect-ratio:4/3; object-fit:cover; }
+  .deliverable-card .card-pad { padding:24px; }
+  .deliverable-list { list-style:none; margin-top:8px; }
+  .deliverable-list li { display:flex; gap:10px; align-items:flex-start; margin-top:10px; font-size:15px; }
+
+  /* ===== PARA QUEM É ===== */
+  .for-who-grid { display:grid; grid-template-columns:1fr; gap:24px; margin-top:32px; }
+  @media (min-width:768px) { .for-who-grid { grid-template-columns:1fr 1fr; } }
+  .for-who-card { border-radius:var(--radius-card); padding:32px; border:1px solid var(--color-border); }
+  .for-who-card.yes { background:linear-gradient(160deg, rgba(242,183,5,0.10), rgba(255,255,255,0.02)); border-color:var(--color-accent); }
+  .for-who-card.no { background:rgba(255,255,255,0.02); }
+  .for-who-list { list-style:none; margin-top:16px; }
+  .for-who-list li { display:flex; gap:10px; align-items:flex-start; margin-top:14px; font-size:15px; }
+
+  /* ===== OFERTA ===== */
+  .offer-card {
+    background:linear-gradient(160deg, #16253E 0%, #0F1F35 100%);
+    border:2px solid var(--color-accent);
+    border-radius:var(--radius-card);
+    padding:48px 32px;
+    text-align:center;
+    box-shadow:var(--shadow-lg);
+  }
+  .offer-ctas { display:flex; flex-direction:column; gap:12px; margin-top:28px; align-items:center; }
+  @media (min-width:560px) { .offer-ctas { flex-direction:row; justify-content:center; } }
+
+  /* ===== GARANTIA ===== */
+  .guarantee-icon-wrap {
+    width:64px; height:64px;
+    background:rgba(242,183,5,0.14);
+    border-radius:999px;
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 20px;
+  }
+
+  /* ===== FAQ ===== */
+  .faq-item { border-bottom:1px solid var(--color-border); }
+  .faq-question {
+    width:100%; background:none; border:none; text-align:left;
+    padding:20px 0; display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--font-heading); font-weight:700; font-size:16px;
+    color:#FFFFFF; cursor:pointer;
+  }
+  .bg-light .faq-question { color:var(--color-text-dark); }
+  .faq-chevron { width:18px; height:18px; flex-shrink:0; transition:transform 250ms ease; }
+  .faq-item.open .faq-chevron { transform:rotate(180deg); }
+  .faq-answer { max-height:0; overflow:hidden; transition:max-height 250ms ease; }
+  .faq-answer-inner { padding-bottom:20px; color:var(--color-muted); font-size:15px; }
+  .bg-light .faq-answer-inner { color:#5C6B7F; }
+
+  /* ===== RODAPÉ ===== */
+  footer {
+    background:linear-gradient(180deg, #0B1828 0%, #050B14 100%);
+    color:#FFFFFF;
+    padding:56px 0 32px;
+  }
+  .footer-grid { display:grid; grid-template-columns:1fr; gap:32px; }
+  @media (min-width:768px) { .footer-grid { grid-template-columns:1.3fr 1fr 1fr; } }
+  footer p { color:rgba(255,255,255,0.65); font-size:14px; }
+  footer h3 { color:#FFFFFF; font-size:15px; margin-bottom:12px; }
+  .footer-bottom {
+    margin-top:40px; padding-top:24px;
+    border-top:1px solid rgba(255,255,255,0.10);
+    text-align:center; font-size:13px; color:rgba(255,255,255,0.45);
+  }
+
+  /* ===== STICKY MOBILE CTA ===== */
+  .sticky-cta {
+    position:fixed; bottom:0; left:0; right:0;
+    background:#0B1828;
+    border-top:1px solid var(--color-border);
+    padding:12px 16px; z-index:40;
+    box-shadow:0 -8px 24px rgba(0,0,0,0.4);
+    display:none;
+  }
+  @media (max-width:767px) { .sticky-cta.show { display:block; } }
+
+  .text-center { text-align:center; }
+  .max-w-narrow { max-width:700px; margin-left:auto; margin-right:auto; }
+  .max-w-mid { max-width:900px; margin-left:auto; margin-right:auto; }
+  .mt-32 { margin-top:32px; }
+</style>
+</head>
+<body>
+
+<!-- ===== TOPBAR ===== -->
+<header class="topbar">
+  <div class="container">
+    <img src="HOR_BRANCO_E_AMARELO.png" alt="HR Projetos, Construções e Serviços" class="topbar-logo">
+    <a href="#oferta" class="btn btn-primary">FALAR COM A EQUIPE</a>
+  </div>
+</header>
+
+<!-- ===== DOBRA 1 — HERO ===== -->
+<section class="bg-dark">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="reveal">
+        <h1 class="hero-h1">A sua próxima obra sem surpresas, sem retrabalho e com <span style="color:var(--color-accent)">20% menos custo</span>.</h1>
+        <p class="anchor" style="margin-top:20px;">Projetos completos, integrados e entregues 30% mais rápido — para quem já sabe o preço de um projeto mal feito.</p>
+        <p class="muted" style="margin-top:16px;">Você não está aqui por acaso. Já passou por obra com material sobrando, projeto incompleto ou estrutura superdimensionada que ninguém soube explicar. A HR Projetos existe para que isso não aconteça de novo.</p>
+        <div style="margin-top:32px;">
+          <a href="#oferta" class="btn btn-primary">QUERO FALAR COM A EQUIPE</a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="hero-img-wrap">
+          <img src="iza_estrutural_1.jpg" alt="Estrutura de concreto armado em construção, projeto HR Projetos" loading="eager">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOBRA 2 — PROVA SOCIAL INICIAL ===== -->
+<section class="bg-dark-alt">
+  <div class="container text-center">
+    <span class="eyebrow reveal">QUEM JÁ CONSTRUIU COM A HR PROJETOS</span>
+    <div class="grid-2" style="margin-top:40px; text-align:left;">
+      <div class="card testimonial-card reveal">
+        <img src="jab_estrutural_1.jpg" alt="Obra executada a partir de projeto HR Projetos">
+        <div class="card-pad">
+          <svg class="quote-icon icon-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 11c0-2.5 1.5-4 4-4M7 11v4a2 2 0 002 2h0a2 2 0 002-2v-2a2 2 0 00-2-2H7zm10-4c-2.5 0-4 1.5-4 4v4a2 2 0 002 2h0a2 2 0 002-2v-2a2 2 0 00-2-2h2"/></svg>
+          <p class="anchor">"Dessa vez foi diferente."</p>
+          <div class="testimonial-name">Depoimento real em breve</div>
+          <div class="testimonial-role">Cliente HR Projetos</div>
+        </div>
+      </div>
+      <div class="card testimonial-card reveal reveal-delay-1">
+        <img src="bsb_estrutural_1.jpg" alt="Projeto estrutural integrado HR Projetos">
+        <div class="card-pad">
+          <svg class="quote-icon icon-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 11c0-2.5 1.5-4 4-4M7 11v4a2 2 0 002 2h0a2 2 0 002-2v-2a2 2 0 00-2-2H7zm10-4c-2.5 0-4 1.5-4 4v4a2 2 0 002 2h0a2 2 0 002-2v-2a2 2 0 00-2-2h2"/></svg>
+          <p class="anchor">Depoimento real em breve</p>
+          <div class="testimonial-name">Depoimento real em breve</div>
+          <div class="testimonial-role">Cliente HR Projetos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOBRA 3 — IDENTIFICAÇÃO DA DOR ===== -->
+<section class="bg-dark">
+  <div class="container text-center max-w-mid">
+    <h2 class="reveal">Você já ouviu alguma dessas frases antes?</h2>
+    <div class="voices">
+      <div class="voice-card reveal">
+        <svg class="icon icon-muted" style="margin:0 auto 12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 11c0-2.5 1.5-4 4-4M7 11v4a2 2 0 002 2h0a2 2 0 002-2v-2a2 2 0 00-2-2H7zm10-4c-2.5 0-4 1.5-4 4v4a2 2 0 002 2h0a2 2 0 002-2v-2a2 2 0 00-2-2h2"/></svg>
+        <p class="voice-text">"O pedreiro dizia os materiais na hora — e sobraram caixas e caixas no final."</p>
+      </div>
+      <div class="voice-card reveal reveal-delay-1">
+        <svg class="icon icon-muted" style="margin:0 auto 12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 11c0-2.5 1.5-4 4-4M7 11v4a2 2 0 002 2h0a2 2 0 002-2v-2a2 2 0 00-2-2H7zm10-4c-2.5 0-4 1.5-4 4v4a2 2 0 002 2h0a2 2 0 002-2v-2a2 2 0 00-2-2h2"/></svg>
+        <p class="voice-text">"Contratei um engenheiro e recebi uma estrutura de ferro que parecia obra de viaduto."</p>
+      </div>
+      <div class="voice-card reveal reveal-delay-2">
+        <svg class="icon icon-muted" style="margin:0 auto 12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 11c0-2.5 1.5-4 4-4M7 11v4a2 2 0 002 2h0a2 2 0 002-2v-2a2 2 0 00-2-2H7zm10-4c-2.5 0-4 1.5-4 4v4a2 2 0 002 2h0a2 2 0 002-2v-2a2 2 0 00-2-2h2"/></svg>
+        <p class="voice-text">"Paguei pelo projeto completo. Recebi metade."</p>
+      </div>
+    </div>
+    <p class="anchor reveal">Se você reconheceu alguma dessas situações, você sabe exatamente quanto custa um projeto feito sem critério.</p>
+    <p class="muted reveal" style="margin-top:12px;">Não é só dinheiro. É meses de estresse, obra parada e decisões tomadas no improviso.</p>
+  </div>
+</section>
+
+<!-- ===== DOBRA 4 — AMPLIFICAÇÃO + DIAGNÓSTICO ===== -->
+<section class="bg-dark-alt">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <h2>O problema não é a obra. É o que veio antes dela.</h2>
+        <p class="muted" style="margin-top:16px;">Quando o projeto tem falha, a obra paga o preço. Material calculado errado vira desperdício. Disciplinas que não conversam entre si viram retrabalho. Prazo estimado no chute vira atraso.</p>
+        <p style="margin-top:16px; font-weight:700;">E quem absorve tudo isso é você.</p>
+        <p class="anchor" style="margin-top:16px;">Esse não é um problema de má-fé. É um problema de como o projeto foi desenvolvido.</p>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <img class="img-rounded" src="ra_estrutural_1.jpg" alt="Estrutura em construção mostrando complexidade de coordenação entre disciplinas" style="aspect-ratio:4/3; object-fit:cover; width:100%; border:1px solid var(--color-border); box-shadow:var(--shadow-md);">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOBRA 5 — OPORTUNIDADE + SOLUÇÃO (números) ===== -->
+<section class="bg-dark">
+  <div class="container text-center max-w-mid">
+    <h2 class="reveal">Existe uma forma de construir onde você sabe exatamente o que vai gastar.</h2>
+    <p class="muted reveal" style="margin-top:16px;">Não é promessa. São <strong style="color:#FFFFFF;">+400 projetos entregues em 10 anos</strong> que mostram que dá para fazer diferente.</p>
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <svg class="icon icon-accent" style="width:32px;height:32px;margin:0 auto 8px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12l5 5L20 7"/></svg>
+        <div class="stat-number" data-count="30">0%</div>
+        <div class="stat-label">mais rápido na entrega</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-1">
+        <svg class="icon icon-accent" style="width:32px;height:32px;margin:0 auto 8px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12l5 5L20 7"/></svg>
+        <div class="stat-number" data-count="20">0%</div>
+        <div class="stat-label">menos custo de obra</div>
+      </div>
+    </div>
+    <p class="anchor reveal" style="margin-top:32px;">Quando todos os projetos falam a mesma língua, a obra para de improvisar.</p>
+  </div>
+</section>
+
+<!-- ===== DOBRA 6 — A SOLUÇÃO ===== -->
+<section class="bg-light">
+  <div class="container text-center max-w-narrow">
+    <h2 class="reveal">A HR Projetos desenvolve todos os seus projetos de forma integrada — arquitetura, estrutura, hidrossanitário e elétrico no mesmo modelo, ao mesmo tempo.</h2>
+    <p class="muted reveal" style="margin-top:16px;">Você recebe um pacote completo onde cada disciplina foi pensada junto com as outras. Sem conflito entre projeto e projeto. Sem surpresa na execução.</p>
+    <p class="anchor reveal" style="margin-top:16px; font-size:18px;">Isso é o que acontece quando o projeto é feito certo desde o início.</p>
+  </div>
+</section>
+
+<!-- ===== DOBRA 7 — PROVA SOCIAL RESULTADOS ===== -->
+<section class="bg-dark">
+  <div class="container text-center">
+    <span class="eyebrow reveal">O QUE NOSSOS CLIENTES DIZEM</span>
+    <div class="grid-2" style="margin-top:40px; text-align:left;">
+      <div class="card testimonial-card reveal">
+        <img src="bsb_estrutural_1.jpg" alt="Estrutura executada a partir de projeto integrado HR Projetos">
+        <div class="card-pad">
+          <svg class="quote-icon icon-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 11c0-2.5 1.5-4 4-4M7 11v4a2 2 0 002 2h0a2 2 0 002-2v-2a2 2 0 00-2-2H7zm10-4c-2.5 0-4 1.5-4 4v4a2 2 0 002 2h0a2 2 0 002-2v-2a2 2 0 00-2-2h2"/></svg>
+          <p class="anchor">Depoimento real em breve</p>
+          <div class="testimonial-name">Depoimento real em breve</div>
+          <div class="testimonial-role">Cliente HR Projetos</div>
+        </div>
+      </div>
+      <div class="card testimonial-card reveal reveal-delay-1">
+        <img src="mat_estrutural_1.jpg" alt="Estrutura metálica de projeto HR Projetos">
+        <div class="card-pad">
+          <svg class="quote-icon icon-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 11c0-2.5 1.5-4 4-4M7 11v4a2 2 0 002 2h0a2 2 0 002-2v-2a2 2 0 00-2-2H7zm10-4c-2.5 0-4 1.5-4 4v4a2 2 0 002 2h0a2 2 0 002-2v-2a2 2 0 00-2-2h2"/></svg>
+          <p class="anchor">Depoimento real em breve</p>
+          <div class="testimonial-name">Depoimento real em breve</div>
+          <div class="testimonial-role">Cliente HR Projetos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOBRA 8 — MECANISMO ÚNICO (BIM) ===== -->
+<section class="bg-dark-deep">
+  <div class="container text-center max-w-mid">
+    <h2 class="reveal">PROJETOS EM BIM INTEGRADO — TODOS OS PROJETOS, UM SÓ MODELO</h2>
+    <p class="muted reveal" style="margin-top:16px;">A HR Projetos desenvolve 100% dos projetos em BIM — Building Information Modeling. Na prática, isso significa que estrutura, hidrossanitário, elétrico e arquitetura são construídos dentro do mesmo modelo digital, com todos visíveis ao mesmo tempo.</p>
+    <div class="bim-grid">
+      <img class="reveal" src="ra_estrutural_1.jpg" alt="Disciplina estrutural desenvolvida em BIM integrado">
+      <img class="reveal reveal-delay-1" src="jab_hidro_1.jpg" alt="Disciplina hidrossanitária desenvolvida no mesmo modelo BIM">
+    </div>
+    <div class="bim-caption">
+      <p style="font-weight:700;">Quando o engenheiro estrutural lança uma viga, ele já vê se ela está passando por cima de uma tubulação hidráulica.</p>
+      <p class="anchor" style="margin-top:12px;">É a diferença entre resolver no computador e resolver com pedreiro, quebradeira e custo extra.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOBRA 9 — ENTREGÁVEIS ===== -->
+<section class="bg-light">
+  <div class="container">
+    <h2 class="text-center reveal">O QUE VOCÊ RECEBE COM A HR PROJETOS</h2>
+    <div class="grid-3" style="margin-top:40px;">
+      <div class="card deliverable-card reveal">
+        <img src="bsb_estrutural_1.jpg" alt="Entregável de projeto estrutural HR Projetos">
+        <div class="card-pad">
+          <h3>Projeto estrutural</h3>
+          <p class="muted" style="margin-top:8px; font-size:15px;">Dimensionado com precisão, sem excesso e sem risco. Você não paga por ferro desnecessário.</p>
+        </div>
+      </div>
+      <div class="card deliverable-card reveal reveal-delay-1">
+        <img src="mar_hidro_1.jpg" alt="Entregável de projeto hidrossanitário HR Projetos">
+        <div class="card-pad">
+          <h3>Projeto hidrossanitário</h3>
+          <p class="muted" style="margin-top:8px; font-size:15px;">Água, esgoto e instalações sanitárias detalhadas e compatibilizadas com as demais disciplinas.</p>
+        </div>
+      </div>
+      <div class="card deliverable-card reveal reveal-delay-2">
+        <img src="bsb_eletrica_1.jpg" alt="Entregável de projeto elétrico HR Projetos">
+        <div class="card-pad">
+          <h3>Projeto elétrico</h3>
+          <p class="muted" style="margin-top:8px; font-size:15px;">Pontos, cargas e especificações claras para a execução sem improvisos.</p>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-mid" style="margin-top:40px;">
+      <ul class="deliverable-list">
+        <li class="reveal">
+          <svg class="icon" style="width:20px;height:20px;margin-top:2px;stroke:var(--color-accent);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>
+          <span><strong>Lista de materiais precisa</strong> — gerada diretamente do modelo BIM. Você compra o que vai usar.</span>
+        </li>
+        <li class="reveal reveal-delay-1">
+          <svg class="icon" style="width:20px;height:20px;margin-top:2px;stroke:var(--color-accent);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>
+          <span><strong>3 revisões de projeto inclusas</strong> — ajustes e adequações sem custo adicional.</span>
+        </li>
+      </ul>
+      <p class="anchor text-center" style="margin-top:24px;">Você recebe tudo que precisa para construir — e nada que vai sobrar no final.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOBRA 10 — PARA QUEM É ===== -->
+<section class="bg-dark">
+  <div class="container max-w-mid">
+    <div class="for-who-grid">
+      <div class="for-who-card yes reveal">
+        <h3>ESSA PARCERIA É PARA VOCÊ SE:</h3>
+        <ul class="for-who-list">
+          <li><svg class="icon icon-accent" style="width:20px;height:20px;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg><span>Você já construiu antes e <strong>não quer repetir os erros da última obra</strong></span></li>
+          <li><svg class="icon icon-accent" style="width:20px;height:20px;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg><span>Você está planejando uma construção de médio ou alto padrão e sabe que <strong>projeto mal feito sai mais caro</strong></span></li>
+          <li><svg class="icon icon-accent" style="width:20px;height:20px;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg><span>Você quer <strong>saber o que vai gastar antes de gastar</strong></span></li>
+          <li><svg class="icon icon-accent" style="width:20px;height:20px;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg><span>Você já foi indicado por um arquiteto ou pesquisou sobre a HR Projetos</span></li>
+        </ul>
+      </div>
+      <div class="for-who-card no reveal reveal-delay-1">
+        <h3 style="color:var(--color-muted);">ESSA PARCERIA NÃO É PARA VOCÊ SE:</h3>
+        <ul class="for-who-list">
+          <li><svg class="icon icon-muted" style="width:20px;height:20px;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="muted">Você busca o projeto mais barato disponível no mercado</span></li>
+          <li><svg class="icon icon-muted" style="width:20px;height:20px;margin-top:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="muted">Você não valoriza compatibilização entre disciplinas</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOBRA 11 — ANCORAGEM DE VALOR ===== -->
+<section class="bg-dark-alt">
+  <div class="container text-center max-w-narrow">
+    <h2 class="reveal">Quanto custa um retrabalho?</h2>
+    <p class="muted reveal" style="margin-top:16px;">Material comprado a mais que sobra. Parede derrubada para corrigir tubulação. Estrutura redimensionada no meio da laje. Prazo de entrega que dobrou.</p>
+    <p class="anchor reveal" style="margin-top:16px;">Uma reforma de correção em obra de médio padrão pode custar mais do que o projeto completo custaria.</p>
+    <p class="reveal" style="margin-top:16px; font-weight:700; font-size:18px; color:#FFFFFF;">A redução de 20% no custo da obra que a HR Projetos entrega não é desconto. É o que você deixa de desperdiçar quando o projeto foi feito certo.</p>
+  </div>
+</section>
+
+<!-- ===== DOBRA 12 — OFERTA + CTA ===== -->
+<section class="bg-dark" id="oferta">
+  <div class="container max-w-mid">
+    <div class="offer-card reveal">
+      <h2>COMO CONTRATAR A HR PROJETOS</h2>
+      <p class="muted" style="margin-top:16px;">Você pode contratar o <strong style="color:#FFFFFF;">pacote completo de projetos integrados</strong> — todas as disciplinas desenvolvidas juntas no modelo BIM — ou contratar por disciplina, de acordo com o que o seu projeto exige.</p>
+      <p style="margin-top:16px;">O primeiro passo é uma conversa. Sem compromisso.</p>
+      <p class="anchor" style="margin-top:12px;">Você nos conta o projeto. A gente te diz exatamente o que você precisa e como podemos trabalhar juntos.</p>
+      <div class="offer-ctas">
+        <a href="#" class="btn btn-primary">QUERO FALAR COM A EQUIPE</a>
+        <a href="https://wa.me/5583996544837?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20da%20HR%20Projetos%20e%20quero%20saber%20mais%20sobre%20projetos%20integrados" target="_blank" rel="noopener" class="btn btn-secondary">
+          <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21l1.65-3.8a9 9 0 113.4 3.4L3 21z"/></svg>
+          FALAR PELO WHATSAPP
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOBRA 13 — GARANTIA ===== -->
+<section class="bg-light">
+  <div class="container text-center max-w-narrow">
+    <div class="guarantee-icon-wrap reveal">
+      <svg style="width:32px;height:32px;stroke:var(--color-accent);" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+    </div>
+    <h2 class="reveal">REVISÕES INCLUSAS SEM CUSTO ADICIONAL</h2>
+    <p class="muted reveal" style="margin-top:16px;">Seu projeto inclui <strong>3 rodadas de revisão</strong> — ajustes, adequações e correções sem nenhum custo extra.</p>
+    <p class="anchor reveal" style="margin-top:16px;">Você não precisa se preocupar em "acertar de primeira". Estamos aqui para ajustar até o projeto estar exatamente como você precisa.</p>
+  </div>
+</section>
+
+<!-- ===== DOBRA 14 — PROVA SOCIAL REFORÇO + AUTORIDADE ===== -->
+<section class="bg-dark">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <img class="img-rounded" src="mat_estrutural_1.jpg" alt="Estrutura metálica de projeto desenvolvido pela HR Projetos" style="aspect-ratio:4/5; object-fit:cover; width:100%; box-shadow:var(--shadow-lg);">
+      </div>
+      <div class="reveal reveal-delay-1">
+        <h2>HR PROJETOS — 10 ANOS, +400 PROJETOS, ZERO IMPROVISO</h2>
+        <p class="muted" style="margin-top:16px;">A HR Projetos foi fundada com um propósito claro: entregar projetos completos, integrados e precisos para construções que não podem errar.</p>
+        <p class="muted" style="margin-top:12px;">Em 10 anos de mercado, desenvolvemos mais de 400 projetos de médio e alto padrão — todos em BIM integrado, todos com as disciplinas conversando entre si desde o primeiro traço.</p>
+        <p style="margin-top:16px; font-weight:700; color:#FFFFFF;">Nossos clientes chegam até nós por indicação de arquitetos que confiam no nosso processo — e por pessoas que já construíram antes e não querem repetir os erros do passado.</p>
+        <p class="anchor" style="margin-top:16px;">Construção de alto padrão não comporta projeto de segunda linha.</p>
+        <div style="margin-top:28px;">
+          <a href="#oferta" class="btn btn-primary">QUERO FALAR COM A EQUIPE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOBRA 15 — SUPORTE/WHATSAPP + FAQ ===== -->
+<section class="bg-dark-alt">
+  <div class="container max-w-mid">
+    <div class="text-center reveal">
+      <h2>Ainda tem dúvidas?</h2>
+      <p class="muted" style="margin-top:12px;">Fale diretamente com a nossa equipe pelo WhatsApp. Sem bot, sem formulário — uma conversa real sobre o seu projeto.</p>
+      <div style="margin-top:24px;">
+        <a href="https://wa.me/5583996544837?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20da%20HR%20Projetos%20e%20quero%20saber%20mais%20sobre%20projetos%20integrados" target="_blank" rel="noopener" class="btn btn-secondary">
+          <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21l1.65-3.8a9 9 0 113.4 3.4L3 21z"/></svg>
+          FALAR PELO WHATSAPP
+        </a>
+      </div>
+    </div>
+
+    <h2 class="text-center reveal" style="margin-top:64px;">PERGUNTAS FREQUENTES</h2>
+    <div style="margin-top:32px;">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Vocês fazem apenas projetos ou também acompanham a obra?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Nosso foco é o desenvolvimento dos projetos. Entregamos tudo que o executor precisa para construir com segurança e precisão.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Posso contratar só um tipo de projeto — elétrico ou hidráulico, por exemplo?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Sim. Trabalhamos com pacote completo integrado ou por disciplina, conforme o que o seu projeto exige.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Qual é o prazo de entrega dos projetos?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Nossos projetos são entregues 30% mais rápido do que a média do mercado. O prazo exato depende da complexidade e escopo do projeto — definimos isso na conversa inicial.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Quanto custa um projeto completo?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Cada projeto tem suas particularidades. O valor é definido após entendermos o escopo, metragem e complexidade da sua obra. Entre em contato para receber uma proposta.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Como funciona o processo de revisão?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Seu projeto inclui 3 rodadas de revisão sem custo adicional. Você solicita os ajustes, nossa equipe incorpora e devolve o projeto atualizado.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Vocês já trabalharam com projetos parecidos com o meu?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Em 10 anos, entregamos mais de 400 projetos de médio e alto padrão. É muito provável que já tenhamos experiência com o tipo de construção que você está planejando.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Por que BIM integrado é melhor do que projetos desenvolvidos separadamente?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Porque no BIM todas as disciplinas compartilham o mesmo modelo. Interferências são detectadas e corrigidas antes da obra — não durante. Isso elimina retrabalho e reduz custo de execução.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOBRA 16 — RODAPÉ ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="HOR_BRANCO_E_AMARELO.png" alt="HR Projetos, Construções e Serviços" style="width:200px; margin-bottom:16px;">
+        <p>Projetos de engenharia integrados para construções de médio e alto padrão.</p>
+      </div>
+      <div>
+        <h3>Contato</h3>
+        <p>helviorickhardson@gmail.com</p>
+        <p>(83) 9 9654-4837</p>
+      </div>
+      <div>
+        <h3>Empresa</h3>
+        <p>HR Projetos, Construções e Serviços</p>
+        <p>CNPJ 49.736.871/0001-67</p>
+        <p>Atendimento online para todo o Brasil</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Todos os Direitos Reservados © HR Projetos <span id="year"></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== STICKY MOBILE CTA ===== -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#oferta" class="btn btn-primary" style="width:100%;">QUERO FALAR COM A EQUIPE</a>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => io.observe(el));
+
+  const counters = document.querySelectorAll('.stat-number');
+  const counterIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-count'), 10);
+        const duration = 800;
+        const startTime = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const value = Math.floor(progress * target);
+          el.textContent = value + '%';
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target + '%';
+        }
+        requestAnimationFrame(tick);
+        counterIO.unobserve(el);
+      }
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(el => counterIO.observe(el));
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(openItem => {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-answer').style.maxHeight = null;
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        }
+      });
+      if (isOpen) {
+        item.classList.remove('open');
+        answer.style.maxHeight = null;
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  const stickyCta = document.getElementById('stickyCta');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) stickyCta.classList.add('show');
+    else stickyCta.classList.remove('show');
+  }, { passive: true });
+</script>
+
+</body>
+</html>
